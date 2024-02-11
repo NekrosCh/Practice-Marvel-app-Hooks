@@ -5,6 +5,7 @@ import useMarvelService from '../../services/MarvelService';
 import Skeleton from '../skeleton/Skeleton';
 import './charInfo.scss';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const CharInfo = (props) => {
 
@@ -82,9 +83,12 @@ const View = ({char}) => {
                 {
                     comics.map((item, i) => {
                         if (i > 9) return;
+                        const itemId = item.resourceURI.slice(43);
                         return (
                             <li key={i} className="char__comics-item">
-                                {item.name}
+                                <Link to={`/comics/${itemId}`}>
+                                    {item.name}
+                                </Link>
                             </li>
                         )
                     })
